@@ -4,13 +4,20 @@
 
 <p>Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="FetchData">Click me</button>
+
+<p>@fun</p>
 
 @code {
+    private const string startupURL = "https://api.spacetraders.io/game/status";
     private int currentCount = 0;
+    private bool display = false;
+    static readonly HttpClient client = new HttpClient();
+    private string fun;
 
-    private void IncrementCount()
+    private async void FetchData()
     {
-        currentCount++;
+        var response = await client.GetStringAsync(startupURL);
+        @*return fun = await client.GetStringAsync(startupURL);*@
     }
 }
