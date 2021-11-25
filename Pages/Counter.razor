@@ -5,7 +5,6 @@
 <p>Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="FetchData">Click me</button>
-
 <p>@fun</p>
 
 @code {
@@ -15,9 +14,11 @@
     static readonly HttpClient client = new HttpClient();
     private string fun;
 
-    private async void FetchData()
+    private void IncrementCount() => currentCount += 1;
+
+    private async Task<string> FetchData()
     {
         var response = await client.GetStringAsync(startupURL);
-        @*return fun = await client.GetStringAsync(startupURL);*@
+        return fun = await client.GetStringAsync(startupURL);
     }
 }
