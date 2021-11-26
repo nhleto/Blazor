@@ -1,5 +1,20 @@
 ﻿@page "/"
+@using Blazor.Models
 
-<h1>Hello, world!</h1>
+<h1>Status</h1>
 
-Welcome to your new app.
+<button class="" @onclick="FetchData">Click me </button>
+<p>@_status?.Status</p>
+
+@code {
+
+    private const string StartupUrl = "https://api.spacetraders.io/game/status";
+    static readonly HttpClient Client = new HttpClient();
+    private InitialContactResponse _status;
+
+    private async Task FetchData()
+    {
+        var response = await Client.GetStringAsync(StartupUrl);
+        _status = JsonConvert.DeserializeObject<InitialContactResponse>(response);
+    }
+}

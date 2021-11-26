@@ -1,7 +1,7 @@
 ﻿using System;
-namespace Blazor.Model
+namespace Blazor.Models
 {
-    public class Response
+    public class InitialContactResponse
     {
         public string Status { get; set; }
         public string Message { get; set; }
