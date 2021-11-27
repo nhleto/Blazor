@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SpaceTraders
+namespace Blazor.SpaceTraders
 {
     public static class ServiceConfiguration
     {

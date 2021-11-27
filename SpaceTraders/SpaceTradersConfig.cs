@@ -1,4 +1,4 @@
-﻿namespace SpaceTraders
+﻿namespace Blazor.SpaceTraders
 {
     public class SpaceTradersConfig
     {

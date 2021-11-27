@@ -1,6 +1,8 @@
 ﻿@page "/"
 @using Blazor.Models
 @using Blazor.Shared
+@using SpaceTraders
+@inject SpaceTradersClient
 
 <TopBar></TopBar>
 <div class="container mx-auto">
@@ -12,13 +14,10 @@
 </div>
 
 @code {
-    private const string StartupUrl = "https://api.spacetraders.io/game/status";
-    static readonly HttpClient Client = new HttpClient();
     private InitialContactResponse _status;
 
     private async Task FetchData()
     {
-        var response = await Client.GetStringAsync(StartupUrl);
-        _status = JsonConvert.DeserializeObject<InitialContactResponse>(response);
+        _status = await SpaceTradersClient.GetOnlineStatus();
     }
 }
