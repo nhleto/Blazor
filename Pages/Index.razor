@@ -1,13 +1,17 @@
 ﻿@page "/"
 @using Blazor.Models
+@using Blazor.Shared
 
-<h1>Status</h1>
-
-<button class="" @onclick="FetchData">Click me </button>
-<p>@_status?.Status</p>
+<TopBar></TopBar>
+<div class="container mx-auto">
+    <div class="flex">
+        <h1>Status</h1>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" @onclick="FetchData">Click me </button>
+        <p>@_status?.Status</p>
+    </div>
+</div>
 
 @code {
-
     private const string StartupUrl = "https://api.spacetraders.io/game/status";
     static readonly HttpClient Client = new HttpClient();
     private InitialContactResponse _status;
